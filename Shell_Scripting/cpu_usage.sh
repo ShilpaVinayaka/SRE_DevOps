@@ -1,6 +1,9 @@
 # shell script to check the CPU usage and alert if greater than 80%
 
 # Get the current CPU idle percentage
+# cut -d. -f1 is used to get the integer part of the idle percentage
+# cut -d is used to get the idle percentage from the output of top command
+# -f1 is used to get the first field of the output which is the idle percentage
 cpu_idle=$(top -bn1 | grep "Cpu(s)" | awk '{print $8}' | cut -d. -f1)
 
 # Calculate the current CPU usage percentage
